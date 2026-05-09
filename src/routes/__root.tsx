@@ -72,14 +72,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "dentanel demo website" },
+      { name: "description", content: "SmileCraft Pro builds premium dental clinic websites with 3D animations and psychological design to capture attention and convert visitors into leads." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "dentanel demo website" },
+      { property: "og:description", content: "SmileCraft Pro builds premium dental clinic websites with 3D animations and psychological design to capture attention and convert visitors into leads." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "dentanel demo website" },
+      { name: "twitter:description", content: "SmileCraft Pro builds premium dental clinic websites with 3D animations and psychological design to capture attention and convert visitors into leads." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/9849ddac-5713-4f84-8099-a50ff6f6e118/id-preview-e04d2a62--2ca739de-d58d-47c1-a6dd-924030ca870d.lovable.app-1778298036947.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/9849ddac-5713-4f84-8099-a50ff6f6e118/id-preview-e04d2a62--2ca739de-d58d-47c1-a6dd-924030ca870d.lovable.app-1778298036947.png" },
     ],
     links: [
       {
