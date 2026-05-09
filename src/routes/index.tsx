@@ -488,17 +488,53 @@ function Doctor() {
 /* ============ BOOKING ============ */
 function Booking() {
   const [loading, setLoading] = useState(false);
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [service, setService] = useState("");
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (loading) return;
+
+    const trimmedName = name.trim();
+    const trimmedPhone = phone.trim();
+    if (trimmedName.length < 2) {
+      toast.error("Please enter your name");
+      return;
+    }
+    if (!/^[0-9+\s\-()]{10,15}$/.test(trimmedPhone)) {
+      toast.error("Please enter a valid phone number");
+      return;
+    }
+    if (!service) {
+      toast.error("Please select a service");
+      return;
+    }
+
     setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      toast.success("Booking received!", {
-        description: "We'll call you shortly to confirm your slot.",
+    try {
+      const res = await fetch("/api/public/booking", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: trimmedName, phone: trimmedPhone, service }),
       });
-      (e.target as HTMLFormElement).reset();
-    }, 700);
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.ok) throw new Error(data.error || "Submission failed");
+
+      toast.success("Appointment request submitted", {
+        description:
+          "Your appointment request has been submitted successfully. Our clinic will contact you soon.",
+      });
+      setName("");
+      setPhone("");
+      setService("");
+    } catch (err) {
+      toast.error("Something went wrong", {
+        description: "Please try again or contact us on WhatsApp.",
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
