@@ -571,30 +571,30 @@ function Booking() {
         <form onSubmit={onSubmit} className="reveal bg-gradient-card rounded-3xl p-7 sm:p-9 shadow-strong border border-border space-y-5">
           <div className="space-y-2">
             <Label htmlFor="name" className="font-semibold">Your Name</Label>
-            <Input id="name" required minLength={2} maxLength={60} placeholder="Enter full name" className="h-12 rounded-xl" />
+            <Input id="name" value={name} onChange={(e) => setName(e.target.value)} required minLength={2} maxLength={60} placeholder="Enter full name" className="h-12 rounded-xl" />
           </div>
           <div className="space-y-2">
             <Label htmlFor="phone" className="font-semibold">Phone Number</Label>
-            <Input id="phone" type="tel" required pattern="[0-9+\s-]{10,15}" placeholder="+91 98765 43210" className="h-12 rounded-xl" />
+            <Input id="phone" type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} required pattern="[0-9+\s\-()]{10,15}" placeholder="+91 98765 43210" className="h-12 rounded-xl" />
           </div>
           <div className="space-y-2">
             <Label htmlFor="service" className="font-semibold">Service Needed</Label>
-            <Select required>
+            <Select value={service} onValueChange={setService} required>
               <SelectTrigger id="service" className="h-12 rounded-xl">
                 <SelectValue placeholder="Choose a service" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="cleaning">Teeth Cleaning</SelectItem>
-                <SelectItem value="rct">Root Canal</SelectItem>
-                <SelectItem value="whitening">Teeth Whitening</SelectItem>
-                <SelectItem value="braces">Braces / Aligners</SelectItem>
-                <SelectItem value="implants">Dental Implants</SelectItem>
-                <SelectItem value="other">Something Else</SelectItem>
+                <SelectItem value="Teeth Cleaning">Teeth Cleaning</SelectItem>
+                <SelectItem value="Root Canal">Root Canal</SelectItem>
+                <SelectItem value="Teeth Whitening">Teeth Whitening</SelectItem>
+                <SelectItem value="Braces / Aligners">Braces / Aligners</SelectItem>
+                <SelectItem value="Dental Implants">Dental Implants</SelectItem>
+                <SelectItem value="Something Else">Something Else</SelectItem>
               </SelectContent>
             </Select>
           </div>
           <Button type="submit" disabled={loading} size="lg" className="w-full h-14 rounded-xl text-base font-bold bg-gradient-primary hover:opacity-95">
-            {loading ? "Booking..." : "Book Your Slot Now"}
+            {loading ? "Submitting..." : "Book Your Slot Now"}
           </Button>
           <p className="text-xs text-center text-muted-foreground">
             🔒 No spam. We'll only contact you for your appointment.
