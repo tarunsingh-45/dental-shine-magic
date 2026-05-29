@@ -131,8 +131,8 @@
 }
 @keyframes pulse-cta {
   0%, 90%, 100% { transform: scale(1); box-shadow: var(--shadow-medium); }
-  93% { transform: scale(1.04); box-shadow: 0 0 0 8px oklch(0.55 0.18 240 / 0.15), var(--shadow-strong); }
-  96% { transform: scale(1); box-shadow: 0 0 0 16px oklch(0.55 0.18 240 / 0), var(--shadow-medium); }
+  93% { transform: scale(1.04); box-shadow: 0 0 0 8px rgba(29, 111, 214, 0.15), var(--shadow-strong); }
+  96% { transform: scale(1); box-shadow: 0 0 0 16px rgba(29, 111, 214, 0), var(--shadow-medium); }
 }
 @keyframes fade-up {
   from { opacity: 0; transform: translateY(30px); }
